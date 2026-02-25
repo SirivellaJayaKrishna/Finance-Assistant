@@ -31,6 +31,9 @@
 > All AlertAgent warnings when budgets are exceeded
 
 ---
+## 🎥 Demo
+
+https://github.com/user-attachments/assets/40355ce1-5c74-4ad6-b29a-1876d61bc174
 
 ## ✨ Features
 
