@@ -13,14 +13,16 @@ async function req(path, opts = {}) {
 }
 
 export const api = {
-  health:          ()      => req('/health'),
-  getSummary:      ()      => req('/summary'),
-  getStats:        ()      => req('/stats'),
-  getTransactions: (n=30)  => req(`/transactions?limit=${n}`),
-  getAlerts:       (n=20)  => req(`/alerts?limit=${n}`),
-  getBudgets:      ()      => req('/budgets'),
+  health:             ()      => req('/health'),
+  getSummary:         ()      => req('/summary'),
+  getStats:           ()      => req('/stats'),
+  getTransactions:    (n=30)  => req(`/transactions?limit=${n}`),
+  getAlerts:          (n=20)  => req(`/alerts?limit=${n}`),
+  getBudgets:         ()      => req('/budgets'),
   setBudget: (category, monthly_limit) =>
     req('/budgets', { method:'POST', body: JSON.stringify({ category, monthly_limit }) }),
   processSMS: (sms) =>
     req('/process-sms', { method:'POST', body: JSON.stringify({ sms }) }),
+  deleteTransaction: (id) =>
+    req(`/transactions/${id}`, { method: 'DELETE' }),
 }

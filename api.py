@@ -184,3 +184,23 @@ def get_stats():
 
 if __name__ == "__main__":
     uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+
+
+@app.delete("/transactions/{transaction_id}")
+def delete_transaction(transaction_id: int):
+    """Delete a transaction by ID."""
+    try:
+        conn = get_conn()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM expenses WHERE id = ?", (transaction_id,))
+        if not cur.fetchone():
+            conn.close()
+            raise HTTPException(status_code=404, detail="Transaction not found")
+        cur.execute("DELETE FROM expenses WHERE id = ?", (transaction_id,))
+        conn.commit()
+        conn.close()
+        return {"ok": True, "deleted_id": transaction_id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
