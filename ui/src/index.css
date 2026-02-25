@@ -1,0 +1,32 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #07090e;
+  --bg2:     #0d1117;
+  --bg3:     #141b26;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text:    #e8edf5;
+  --muted:   #4b5a72;
+  --muted2:  #7a8a9e;
+  --green:   #4ade80;
+  --teal:    #2dd4bf;
+  --blue:    #60a5fa;
+  --purple:  #a78bfa;
+  --orange:  #fb923c;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --sans:    'Syne', sans-serif;
+  --mono:    'IBM Plex Mono', monospace;
+}
+
+html, body, #root { height: 100%; background: var(--bg); color: var(--text); font-family: var(--mono); -webkit-font-smoothing: antialiased; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+@keyframes fadeUp  { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:none } }
+@keyframes slideIn { from { opacity:0; transform:translateX(-10px) } to { opacity:1; transform:none } }
+@keyframes pulse   { 0%,100%{opacity:.2} 50%{opacity:1} }
+@keyframes spin    { to { transform:rotate(360deg) } }
+@keyframes glow    { 0%,100%{opacity:.04} 50%{opacity:.09} }
+@keyframes shimmer { from{background-position:-600px 0} to{background-position:600px 0} }
